@@ -16,6 +16,8 @@ object WordCount {
     val sc = new SparkContext(config)
 
     //读取文件,将文件内容一行一行地读取
+    //路径查找位置默认从当前的部署环境中查找
+    //如果需要从本地查找，file:///opt/module/spark/in
     val lines : RDD[String] = sc.textFile("in/word.txt")
 
     //将一行一行的数据分解成一个一个单词

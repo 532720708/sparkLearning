@@ -13,12 +13,17 @@ object Spark02_Oper1 {
     val config : SparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount")
 
     //创建Spark上下文对象
+    //只要创建Spark上下文对象，这个类就叫Driver！
+
     val sc = new SparkContext(config)
 
     // map算子
-    val listRDD: RDD[Int] = sc.makeRDD(1 to 10)
+    val listRDD: RDD[Int] = sc.makeRDD(1 to 4)
 
-    val mapRDD: RDD[Int] = listRDD.map(_ * 2)
+    val i = 10
+    //所有RDD算子当中的计算功能都是由Executor做的
+    //i要能序列化
+    val mapRDD: RDD[Int] = listRDD.map(_*i)
 
     mapRDD.collect().foreach(println)
 

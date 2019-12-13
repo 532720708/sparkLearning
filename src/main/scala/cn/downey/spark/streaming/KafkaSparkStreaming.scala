@@ -17,6 +17,10 @@ object KafkaSparkStreaming {
     // --zookeeper hadoop100:2181
     // --create --topic kafkaStreamDemo
     // --partitions 4 --replication-factor 2
+
+    //[atguigu@hadoop100 kafka]$ bin/kafka-console-producer.sh
+    // --broker-list hadoop100:9092
+    // --topic kafkaStreamDemo
     val kafkaDStream: ReceiverInputDStream[(String, String)] = KafkaUtils.createStream(
       streamingContext,
       "hadoop100:2181,hadoop101:2181,hadoop102:2181,hadoop103:2181",
